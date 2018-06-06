@@ -9,8 +9,7 @@ namespace TFinal53rdStreet.Models
 {
     public class Reviews
     {
-        public class Reviews
-        {
+
             [Key]
             public int ID_Review { get; set; }
             public string Review { get; set; }
@@ -25,6 +24,6 @@ namespace TFinal53rdStreet.Models
             public int UserFK { get; set; }
             //chama, neste caso, o musical da tabela Musical
             public virtual User User { get; set; }
-        }
+        
     }
 }
