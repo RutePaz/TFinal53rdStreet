@@ -181,25 +181,40 @@ namespace TFinal53rdStreet.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID_Musical,Title,Synopsis,Director,Duration,OpeningNight,Ticket,Poster")] Musical musical, HttpPostedFileBase uploadPoster)
         {
+            string newName = "";
+            string oldName = "";
             if (ModelState.IsValid)
             {
                 try
                 {
-                    //neste cado já existe um Agente 
-                    //apenas quero EDITAR os seus dados
+                    //se foi fornecida uma nova imagem, preparam-se os dados para efetuar a alteração
+                    if (uploadPoster != null) {
+                        //preservar o nome antigo, para depois remover do disco do servidor
+                        oldName = musical.Poster;
+                        //para o novo nome do ficheiro, adiciona-se o termo gerado pelo timestamp
+                        //e a extensão do ficheiro é obtida automaticamente em vez de ser escrita de forma explícita
+                        newName = "Musical_" + musical.ID_Musical + DateTime.Now.ToString("yyyyMMdd_hhmmss") + Path.GetExtension(uploadPoster.FileName).ToLower();
+                        //atualizar os dados do Musical com o novo nome
+                        musical.Poster = newName;
+                        //guardar a nova imagem no disco rígido
+                        uploadPoster.SaveAs(Path.Combine(Server.MapPath("~/images/"), newName));
+                    }
+                    //guardar os dados do Musical
                     db.Entry(musical).State = EntityState.Modified;
                     //efetuar 'Commit'
                     db.SaveChanges();
                     return RedirectToAction("Index");
 
                     if (uploadPoster != null)
-                        uploadPoster.SaveAs(Path.Combine(Server.MapPath("~/images/"), musical.Poster));
-
+                        System.IO.File.Delete(Path.Combine(Server.MapPath("~/images/"), oldName));
+                    //enviar os dados para a página inicial
                     return RedirectToAction("Index");
 
                 }
                 catch (Exception) {
                     throw;
+                    //caso haja um erro deve ser enviada uma mensagem para o utilizador 
+                    ModelState.AddModelError("", string.Format("An error occurred with the addition of the musical {0}", musical.Title));
                 }
 
 
