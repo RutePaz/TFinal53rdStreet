@@ -7,7 +7,7 @@
 <h2>Edit</h2>
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "Musical", FormMethod.Post, new {enctype = "multipart/form-data"}))
 {
     @Html.AntiForgeryToken()
 
@@ -68,8 +68,11 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Poster, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
+                @*com a adição da opção de efetuar upload de uma imagem, estes objetos não são mais necessários 
                 @Html.EditorFor(model => model.Poster, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Poster, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.Poster, "", new { @class = "text-danger" })*@
+
+                <input type="file" name="uploadPoster" style="color:blue;" accept=".jpg"/>
             </div>
         </div>
 

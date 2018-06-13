@@ -18,13 +18,11 @@ namespace TFinal53rdStreet.Models
         [Key]
         public int ID_Musical { get; set; }
         [Required(ErrorMessage = " {0} required field!")]
-        [RegularExpression("[A-ZÍÉÂÁ][a-záéíóúàèìòùâêîôûäëïöüãõç]+(( |'|-| dos | da | de | e | d')[A-ZÍÉÂÁ][a-záéíóúàèìòùâêîôûäëïöüãõç]+){1,3}",
-        ErrorMessage = "O {0} it can only contain letters of blank spaces. Each word has to begin with a capital letter followed by a lower case letters...")]
         public string Title { get; set; }
         public string Synopsis { get; set; }
         public string Director { get; set; }
         public string Duration { get; set; }
-        public DateTime OpeningNight { get; set; }
+        public string OpeningNight { get; set; }
         public string Ticket { get; set; }
         public string Poster { get; set; }
 

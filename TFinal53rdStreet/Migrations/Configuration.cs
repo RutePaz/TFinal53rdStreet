@@ -4,6 +4,7 @@ namespace TFinal53rdStreet.Migrations
     using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
+    using System.Data.Entity.Validation;
     using System.Linq;
     using TFinal53rdStreet.Models;
 
@@ -17,36 +18,38 @@ namespace TFinal53rdStreet.Migrations
         protected override void Seed(TFinal53rdStreet.Models.MusicalDB context)
         {
             //*********************************************************************
-            // add Musicals
-            var musical = new List<Musical> {
-  new Musical {ID_Musical=1, Title="The Lion King", Synopsis="A lively stage adaptation of the Academy Award-winning 1994 Disney film, The Lion King is the story of a young lion prince living in the flourishing African Pride Lands. Born into the royal family, precocious cub Simba spends his days exploring the sprawling savanna grasslands and idolizing his kingly father, Mufasa, while youthfully shirking the responsibility his position in life requires. When an unthinkable tragedy, orchestrated by Simba’s wicked uncle, Scar, takes his father’s life, Simba flees the Pride Lands, leaving his loss and the life he knew behind. Eventually companioned by two hilarious and unlikely friends, Simba starts anew. But when weight of responsibility and a desperate plea from the now ravaged Pride Lands come to find the adult prince, Simba must take on a formidable enemy, and fulfill his destiny to be king. A vibrant and exciting tale from the great creatives at Disney, The Lion King is a story of love and redemption that nobody should miss.",  Director="Julie Taymor", Duration="2hrs, 30mins", OpeningNight=new DateTime(2018,10,15), Ticket="from 106.00$",Poster="TheLionKing.jpg"},
+            try
+            {
+                // add Musicals
+                var musical = new List<Musical> {
+  new Musical {ID_Musical=1, Title="The Lion King", Synopsis="A lively stage adaptation of the Academy Award-winning 1994 Disney film, The Lion King is the story of a young lion prince living in the flourishing African Pride Lands. Born into the royal family, precocious cub Simba spends his days exploring the sprawling savanna grasslands and idolizing his kingly father, Mufasa, while youthfully shirking the responsibility his position in life requires. When an unthinkable tragedy, orchestrated by Simba’s wicked uncle, Scar, takes his father’s life, Simba flees the Pride Lands, leaving his loss and the life he knew behind. Eventually companioned by two hilarious and unlikely friends, Simba starts anew. But when weight of responsibility and a desperate plea from the now ravaged Pride Lands come to find the adult prince, Simba must take on a formidable enemy, and fulfill his destiny to be king. A vibrant and exciting tale from the great creatives at Disney, The Lion King is a story of love and redemption that nobody should miss.",  Director="Julie Taymor", Duration="2hrs, 30mins", OpeningNight"15/10/2018", Ticket="from 106.00$",Poster="TheLionKing.jpg"},
 
-  new Musical {ID_Musical=2, Title="Wicked",  Synopsis="Wicked, the Broadway sensation, looks at what happened in the Land of Oz…but from a different angle. Long before Dorothy arrives, there is another girl, born with emerald-green skin—smart, fiery, misunderstood, and possessing an extraordinary talent. When she meets a bubbly blonde who is exceptionally popular, their initial rivalry turns into the unlikeliest of friendships…until the world decides to call one “good,” and the other one “wicked.” With a thrilling score that includes the hits “Defying Gravity,” “Popular” and “For Good,” Wicked has been hailed by The New York Times as “the defining musical of the decade.” Time Magazine cheers, “if every musical had the brain, the heart, and the courage of Wicked, Broadway really would be a magical place.” The Gershwin Theatre on 50th Street and Broadway is that magical place. From the first electrifying note to the final breathtaking moment, Wicked—the untold true story of the Witches of Oz—transfixes audiences with its wildly inventive story. It will send your spirits soaring to heights you’ll never forget.",  Director="Joe Mantello", Duration="2hrs, 45mins", OpeningNight=new DateTime(2018,10,30), Ticket="from 89.00",Poster="Wicked.jpg"},
+  new Musical {ID_Musical=2, Title="Wicked",  Synopsis="Wicked, the Broadway sensation, looks at what happened in the Land of Oz…but from a different angle. Long before Dorothy arrives, there is another girl, born with emerald-green skin—smart, fiery, misunderstood, and possessing an extraordinary talent. When she meets a bubbly blonde who is exceptionally popular, their initial rivalry turns into the unlikeliest of friendships…until the world decides to call one “good,” and the other one “wicked.” With a thrilling score that includes the hits “Defying Gravity,” “Popular” and “For Good,” Wicked has been hailed by The New York Times as “the defining musical of the decade.” Time Magazine cheers, “if every musical had the brain, the heart, and the courage of Wicked, Broadway really would be a magical place.” The Gershwin Theatre on 50th Street and Broadway is that magical place. From the first electrifying note to the final breathtaking moment, Wicked—the untold true story of the Witches of Oz—transfixes audiences with its wildly inventive story. It will send your spirits soaring to heights you’ll never forget.",  Director="Joe Mantello", Duration="2hrs, 45mins", OpeningNight="30/10/2018", Ticket="from 89.00",Poster="Wicked.jpg"},
 
-  new Musical {ID_Musical=3, Title="A Bronx Tale",  Synopsis="A Bronx Tale is a streetwise musical that takes you to the stoops of the Bronx in the 1960s—where a young man is caught between the father he loves and the mob boss he’d love to be. Featuring a doo-wop score, A Bronx Tale is a story about respect, loyalty, love, and above all else: family.",Director="Robert De Niro and Jerry Zaks", Duration="2hrs, 10mins", OpeningNight=new DateTime(2019,12,1), Ticket="from 29.00$",Poster="ABronxTale.jpg"},
+  new Musical {ID_Musical=3, Title="A Bronx Tale",  Synopsis="A Bronx Tale is a streetwise musical that takes you to the stoops of the Bronx in the 1960s—where a young man is caught between the father he loves and the mob boss he’d love to be. Featuring a doo-wop score, A Bronx Tale is a story about respect, loyalty, love, and above all else: family.",Director="Robert De Niro and Jerry Zaks", Duration="2hrs, 10mins", OpeningNight="1/12/2019", Ticket="from 29.00$",Poster="ABronxTale.jpg"},
 
-  new Musical {ID_Musical=4, Title="Dear Evan Hansen", Synopsis="A letter that was never meant to be seen, a lie that was never meant to be told, a life he never dreamed he could have. Evan Hansen is about to get the one thing he’s always wanted: A chance to finally fit in. Both deeply personal and profoundly contemporary, Dear Evan Hansen is the new American musical about life and the way we live it. Dear Evan Hansen has struck a remarkable chord with audiences and critics everywhere.",Director="Michael Greif", Duration="2hrs, 30mins", OpeningNight=new DateTime(2018,12,04), Ticket="from 119.50$",Poster="DearEvanHansen.jpg"},
-
-
-  new Musical {ID_Musical=5, Title="Spring Awakening", Synopsis="Based on Frank Wedekind's play of the same name, Spring Awakening depicts a dozen young people making their way through the thrilling, complicated and mysterious time of sexual awakening.", Director="Michael Mayer", Duration="2hrs, 20mins", OpeningNight=new DateTime(2018,11,16),Ticket="from 85.00$", Poster="SpringAwakening.jpg"},
-
-  new Musical {ID_Musical=6, Title="Cats",  Synopsis="Based on TS Eliot's Old Possum's Book of Practical Cats, this musical tells the story of the Jellicle cats and each cat's individual quest to be selected as the one lucky cat that will ascend to the heavyside layer. In their desire to be chosen to rise above to cat heaven, each cat sings their story and tells their unique 'tail.'", Director="Trevor Nunn", Duration="2hrs, 30mins", OpeningNight=new DateTime(2018,10,30), Ticket="from 130.00$",Poster="Cats.jpg"},
-
-  new Musical {ID_Musical=7, Title="The Book of Mormon",  Synopsis="The Book of Mormon follows two young missionaries who are sent to Uganda to try to convert citizens to the Mormon religion. One missionary, Elder Price, is an enthusiastic go-getter with a strong dedication to his faith, while his partner, Elder Cunningham, is a socially awkward but well meaning nerd whose tendency to embroider the truth soon lands him in trouble. Upon their arrival in Africa, Elders Price and Cunningham learn that in a society plagued by AIDS, poverty and violence, a successful mission may not be as easy as they expected.", Director="Casey Nicholaw and Trey Parker", Duration="2hrs, 30mins", OpeningNight=new DateTime(2019,3,24),Ticket="from 69.00", Poster="TheBookOfMormon.jpg"},
-
-  new Musical {ID_Musical=8, Title="West Side Story",  Synopsis="Pulled directly from the pages of Shakespeare's Romeo and Juliet, the musical takes place on New York's West Side in the mid-1950s amidst widespread racial and social tension. The show begins as a war is building between two rival gangs fighting over the same piece of turf: born and bred New York boys, The Jets, and Puerto Rican immigrants The Sharks. In the midst of the battlefield are two young romantics, good-boy Tony, a Jet ready to leave the gang life behind, and wide-eyed Maria, the sister of Sharks leader, Bernardo. When Tony and Maria unexpectedly meet and fall for one another, tension between the rival groups only escalates, leading to a bloody and senseless rumble that costs both sides young lives. In spite of the violence, the true story at the core of the show is two lovers trying to find a way to be together—and whether either can survive when hate and ignorance are unwilling to yield.", Director="Gerald Freedman", Duration="2hrs, 40mins", OpeningNight=new DateTime(2019,3,19), Ticket="from 120.00$",Poster="WestSideStory.jpg"},
+  new Musical {ID_Musical=4, Title="Dear Evan Hansen", Synopsis="A letter that was never meant to be seen, a lie that was never meant to be told, a life he never dreamed he could have. Evan Hansen is about to get the one thing he’s always wanted: A chance to finally fit in. Both deeply personal and profoundly contemporary, Dear Evan Hansen is the new American musical about life and the way we live it. Dear Evan Hansen has struck a remarkable chord with audiences and critics everywhere.",Director="Michael Greif", Duration="2hrs, 30mins", OpeningNight="04/12/2018", Ticket="from 119.50$",Poster="DearEvanHansen.jpg"},
 
 
-  new Musical {ID_Musical=9, Title="Guys and Dolls",  Synopsis="Set in Depression-era Times Square, Guys and Dolls is about a couple of big city gamblers and the women who love them. It tells the overlapping stories of high-roller Sky Masterson, who falls in love with mission worker Sarah Brown, and lovable rapscallion Nathan Detroit, engaged for 14 years to Miss Adelaide, a headliner at the Hot Box Club. Nathan runs a famous floating crap game, and an ongoing plot line involves his quest for a safe place for the game as Adelaide continues her quest to convince him to marry her. Meanwhile, Sarah, mistakenly believing that Sky set up an illegal game at the mission, tries to fight her affection for the charismatic crapshooter.", Director="Joseph L. Mankiewicz", Duration="2hrs, 30 mins", OpeningNight=new DateTime(2019,4,29), Ticket="from 130.00$",Poster="GuysAandDolls.jpg"},
+  new Musical {ID_Musical=5, Title="Spring Awakening", Synopsis="Based on Frank Wedekind's play of the same name, Spring Awakening depicts a dozen young people making their way through the thrilling, complicated and mysterious time of sexual awakening.", Director="Michael Mayer", Duration="2hrs, 20mins", OpeningNight="16/11/2018",Ticket="from 85.00$", Poster="SpringAwakening.jpg"},
+
+  new Musical {ID_Musical=6, Title="Cats",  Synopsis="Based on TS Eliot's Old Possum's Book of Practical Cats, this musical tells the story of the Jellicle cats and each cat's individual quest to be selected as the one lucky cat that will ascend to the heavyside layer. In their desire to be chosen to rise above to cat heaven, each cat sings their story and tells their unique 'tail.'", Director="Trevor Nunn", Duration="2hrs, 30mins", OpeningNight="30/10/2018", Ticket="from 130.00$", Poster="Cats.jpg"},
+
+  new Musical {ID_Musical=7, Title="The Book Of Mormon",  Synopsis="The Book of Mormon follows two young missionaries who are sent to Uganda to try to convert citizens to the Mormon religion. One missionary, Elder Price, is an enthusiastic go-getter with a strong dedication to his faith, while his partner, Elder Cunningham, is a socially awkward but well meaning nerd whose tendency to embroider the truth soon lands him in trouble. Upon their arrival in Africa, Elders Price and Cunningham learn that in a society plagued by AIDS, poverty and violence, a successful mission may not be as easy as they expected.", Director="Casey Nicholaw and Trey Parker", Duration="2hrs, 30mins", OpeningNight="24/3/2019",Ticket="from 69.00", Poster="TheBookOfMormon.jpg"},
+
+  new Musical {ID_Musical=8, Title="West Side Story",  Synopsis="Pulled directly from the pages of Shakespeare's Romeo and Juliet, the musical takes place on New York's West Side in the mid-1950s amidst widespread racial and social tension. The show begins as a war is building between two rival gangs fighting over the same piece of turf: born and bred New York boys, The Jets, and Puerto Rican immigrants The Sharks. In the midst of the battlefield are two young romantics, good-boy Tony, a Jet ready to leave the gang life behind, and wide-eyed Maria, the sister of Sharks leader, Bernardo. When Tony and Maria unexpectedly meet and fall for one another, tension between the rival groups only escalates, leading to a bloody and senseless rumble that costs both sides young lives. In spite of the violence, the true story at the core of the show is two lovers trying to find a way to be together—and whether either can survive when hate and ignorance are unwilling to yield.", Director="Gerald Freedman", Duration="2hrs, 40mins", OpeningNight="19/03/2018", Ticket="from 120.00$",Poster="WestSideStory.jpg"},
 
 
-  new Musical {ID_Musical=10, Title="Hamilton",  Synopsis="Hamilton is the story of the unlikely Founding Father determined to make his mark on the new nation as hungry and ambitious as he is. From bastard orphan to Washington's right-hand man, rebel to war hero, a loving husband caught in the country's first sex scandal, to the Treasury head who made an untrusting world believe in the American economy. George Washington, Eliza Hamilton, Thomas Jefferson and Hamilton's lifelong friend/foil Aaron Burr all make their mark in this astonishing new musical exploration of a political mastermind.", Director="Thomas Kail", Duration="2hrs, 55mins", OpeningNight=new DateTime(2018,8,6), Ticket="from 199.00$",Poster="Hamilton.jpg"}
+  new Musical {ID_Musical=9, Title="Guys And Dolls",  Synopsis="Set in Depression-era Times Square, Guys and Dolls is about a couple of big city gamblers and the women who love them. It tells the overlapping stories of high-roller Sky Masterson, who falls in love with mission worker Sarah Brown, and lovable rapscallion Nathan Detroit, engaged for 14 years to Miss Adelaide, a headliner at the Hot Box Club. Nathan runs a famous floating crap game, and an ongoing plot line involves his quest for a safe place for the game as Adelaide continues her quest to convince him to marry her. Meanwhile, Sarah, mistakenly believing that Sky set up an illegal game at the mission, tries to fight her affection for the charismatic crapshooter.", Director="Joseph L. Mankiewicz", Duration="2hrs, 30 mins", OpeningNight="29/04/2019", Ticket="from 130.00$",Poster="GuysAandDolls.jpg"},
+
+
+  new Musical {ID_Musical=10, Title="Hamilton",  Synopsis="Hamilton is the story of the unlikely Founding Father determined to make his mark on the new nation as hungry and ambitious as he is. From bastard orphan to Washington's right-hand man, rebel to war hero, a loving husband caught in the country's first sex scandal, to the Treasury head who made an untrusting world believe in the American economy. George Washington, Eliza Hamilton, Thomas Jefferson and Hamilton's lifelong friend/foil Aaron Burr all make their mark in this astonishing new musical exploration of a political mastermind.", Director="Thomas Kail", Duration="2hrs, 55mins", OpeningNight="06/08/2018", Ticket="from 199.00$",Poster="Hamilton.jpg"}
 };
-            musical.ForEach(mm => context.Musical.AddOrUpdate(m => m.Title, mm));
-            context.SaveChanges();
-            //*********************************************************************
-            // add Cast
-            var Actor = new List<Cast> {
+                musical.ForEach(mm => context.Musical.AddOrUpdate(m => m.Title, mm));
+                context.SaveChanges();
+                //*********************************************************************
+                // add Cast
+                var Actor = new List<Cast> {
 
   new Cast {ID_Actor=1, Name="Dashaun Young",Image="DashaunYoung.jpg"},
   new Cast {ID_Actor=2, Name="L. Steven Taylor",Image="L.StevenTaylor.jpg"},
@@ -161,13 +164,13 @@ namespace TFinal53rdStreet.Migrations
   new Cast {ID_Actor=85, Name="Anthony Ramos",Image="AnthonyRamos.jpg"},
   new Cast {ID_Actor=86, Name="Jasmine Cephas Jones",Image="JasmineCephasJones.jpg"}
 };
-            Actor.ForEach(aa => context.Actor.AddOrUpdate(a => a.Name, aa));
-            context.SaveChanges();
+                Actor.ForEach(aa => context.Actor.AddOrUpdate(a => a.Name, aa));
+                context.SaveChanges();
 
 
-            //*********************************************************************
-            // add Reviews
-            var reviews = new List<Reviews> {
+                //*********************************************************************
+                // add Reviews
+                var reviews = new List<Reviews> {
   new Reviews {ID_Review=1, Review="The breathtakingly staged Broadway adaptation of Disney's king of the cartoon jungle is an instant theater classic.",MusicalFK=1, UserFK=1},
   new Reviews {ID_Review=2, Review="Awe-inspiring! Broadway theater is alive again. [Julie] Taymor's imaginative ideas seem limitless. it's a gorgeous, gasp-inducing spectacle. Most important - against all odds - it has innocence. The show appeals to our primal, childlike excitement in the power of theater to make us see things afresh.",MusicalFK=1,UserFK=4},
 
@@ -202,13 +205,13 @@ namespace TFinal53rdStreet.Migrations
   new Reviews {ID_Review=19, Review="'Hamilton' is the most exciting and significant musical of the decade. Sensationally potent and theatrically vital, it is plugged straight into the wall socket of contemporary music. This show makes me feel hopeful for the future of musical theater.",MusicalFK=10,UserFK=3},
   new Reviews {ID_Review=20, Review="Historic. 'Hamilton' is brewing up a revolution. This is a show that aims impossibly high and hits its target. It's probably not possible to top the adrenaline rush.",MusicalFK=10,UserFK=1}
 };
-            reviews.ForEach(rr => context.Reviews.AddOrUpdate(r => r.Review, rr));
-            context.SaveChanges();
+                reviews.ForEach(rr => context.Reviews.AddOrUpdate(r => r.Review, rr));
+                context.SaveChanges();
 
 
-            //*********************************************************************
-            // add Soundtrack
-            var Song = new List<Soundtrack> {
+                //*********************************************************************
+                // add Soundtrack
+                var Song = new List<Soundtrack> {
   new Soundtrack {ID_Song=1, SongName="Circle of Life", Duration="4:29", MusicalFK=1 },
   new Soundtrack {ID_Song=2, SongName="Grasslands Chant", Duration="2:22", MusicalFK=1},
   new Soundtrack {ID_Song=3, SongName="Morning Report", Duration="2:32", MusicalFK=1},
@@ -448,13 +451,13 @@ new Soundtrack {ID_Song=166, SongName="Alexander Hamilton", Duration="3:57", Mus
   new Soundtrack {ID_Song=211, SongName="Finale (Who Lives, Who Dies, Who Tells Your Story)", Duration="5:02", MusicalFK=10 }
 
 };
-            Song.ForEach(ss => context.Song.AddOrUpdate(m => m.SongName, ss));
-            context.SaveChanges();
+                Song.ForEach(ss => context.Song.AddOrUpdate(m => m.SongName, ss));
+                context.SaveChanges();
 
 
-            //*********************************************************************
-            // add Users
-            var user = new List<User> {
+                //*********************************************************************
+                // add Users
+                var user = new List<User> {
   new User {ID_User=1,Username="Lilette Thorne",Email="l.thorne@gmail.com"},
   new User {ID_User=2,Username="Robert Strickland",Email="robertms@hotmail.com"},
   new User {ID_User=3,Username="Simon Evers",Email="simon_evers@gamil.com"},
@@ -463,12 +466,12 @@ new Soundtrack {ID_Song=166, SongName="Alexander Hamilton", Duration="3:57", Mus
   new User {ID_User=6,Username="Jeremy Saunders",Email="jeremy.p.saunders@gmail.com"}
 
 };
-            user.ForEach(uu => context.User.AddOrUpdate(u => u.Username, uu));
-            context.SaveChanges();
+                user.ForEach(uu => context.User.AddOrUpdate(u => u.Username, uu));
+                context.SaveChanges();
 
-            //*********************************************************************
-            // add CastMusical
-            var CastMusical = new List<CastMusical>
+                //*********************************************************************
+                // add CastMusical
+                var CastMusical = new List<CastMusical>
             {
                new CastMusical {CastFK=1, MusicalFK=1, Character="Simba" },
                new CastMusical {CastFK=2, MusicalFK=1, Character="Mufasa" },
@@ -570,8 +573,22 @@ new Soundtrack {ID_Song=166, SongName="Alexander Hamilton", Duration="3:57", Mus
                 new CastMusical {CastFK=85, MusicalFK=10, Character="Philip Hamilton" },
                 new CastMusical {CastFK=86, MusicalFK=10, Character="Peggy Schuyler" }
             };
-            CastMusical.ForEach(cc => context.CastMusical.AddOrUpdate(c => c.Character, cc));
-            context.SaveChanges();
+                CastMusical.ForEach(cc => context.CastMusical.AddOrUpdate(c => c.Character, cc));
+                context.SaveChanges();
+            }
+            catch (DbEntityValidationException ex)
+            {
+                var erros = ex.EntityValidationErrors
+                        .SelectMany(e => e.ValidationErrors)
+                        .Select(x => "Campo: " + x.PropertyName + " -> " + x.ErrorMessage);
+
+                var mensagem = string.Join("\n", erros);
+
+                throw new Exception(mensagem);
+
+            }
+
         }
     }
 }
+
