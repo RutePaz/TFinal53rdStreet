@@ -17,6 +17,8 @@
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.ID_Musical)
 
+         @*esta instrução foi aqui adicionada, pois é necessária para garantor que o nome dp poster de um Musical seha devidamente entregue ao controller*@
+        @Html.HiddenFor(model => model.ID_Musical)
         <div class="form-group">
             @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
